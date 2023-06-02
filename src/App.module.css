@@ -1,129 +1,15 @@
-.title {
-  color: green;
-}
-.title {
-  font-size: 2.5rem;
-  line-height: 1.4;
-  font-weight: 900;
-}
-.firstSyllable {
-  color: var(--blue-100);
-}
-.secondSyllable {
-  color: var(--purple-200);
-}
-.icon {
-  color: var(--blue-100);
-}
-.todoHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.3rem;
-
-  background-color: var(--gray-700);
-  padding-block: 4rem;
-}
 .contentWrapper {
   display: block;
   margin-inline: auto;
   max-width: 46rem;
   margin-top: -1.652rem;
 }
-.formWrapper {
-  height: 3.25rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-.btnSubmitTask {
-  border: 0;
-  color: var(--gray-100);
-  background-color: var(--blue-200);
-  border-radius: 8px;
-  width: 5.625rem;
-  font-size: 0.875rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.2rem;
-}
-.btnSubmitTask:hover {
-  background-color: var(--blue-100);
-}
-
-.inputTaskName{
-  border-radius: 8px;
-  background-color: var(--gray-500);
-  border: 1px solid var(--gray-700);
-  outline: none;
-  padding-inline: 1rem;
-  width: 100%;
-  color: var(--gray-100);
-  font-size: 1rem;
-}
-.inputTaskName::placeholder {
-  color: var(--gray-300);
-}
 .sectionWrapper {
-  margin-top: 3.75rem;
+  margin-block: 3.6rem;
 }
-.taskStats {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.stat {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  align-items: center;
-}
-.stat > span {
-  background-color: var(--gray-400);
-  color: var(--gray-100);
-  padding: 2px 8px;
-  font-weight: 600;
-  font-size: 0.75rem;
-  border-radius: 1rem;
-}
-.created, .completed{
-  color: var(--purple-100);
-  font-size: 0.875rem;
-}
-
-.created {
-  color: var(--blue-100);
-}
-
 .taskList {
-  margin-top: 2.5rem;
-}
-
-.taskWrapper + .taskWrapper {
-  margin-top: 1rem;
-}
-
-.taskRightSide {
-  width: 100%;
+  margin-top: 1.5rem;
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.taskWrapper {
-  background-color: var(--gray-500);
-  color: var(--gray-100);
-  padding: 1rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.75rem;
 }

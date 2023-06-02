@@ -1,0 +1,50 @@
+.taskRightSide {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.taskWrapper {
+  background-color: var(--gray-500);
+  color: var(--gray-100);
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  border-radius: 8px;
+}
+.btnCheck, .btnTrash{
+  line-height: 0;
+  background-color: transparent;
+  border-radius: 100%;
+  border: 0;
+}
+.iconCheck{
+  color: var(--blue-100);
+  border-radius: 100%;
+}
+.iconCheck:hover {
+  color: var(--blue-200);
+} 
+.iconChecked {
+  color: var(--purple-100);
+}
+.iconChecked:hover {
+  color: var(--purple-200);
+}
+.btnTrash  {
+  color: var(--gray-300);
+  border-radius: 8px;
+}
+.btnTrash:hover {
+  color: var(--red-100);
+}
+.taskDescriptionStrikes {
+  color: var(--gray-300);
+  text-decoration: line-through;
+}

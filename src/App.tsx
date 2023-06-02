@@ -1,66 +1,89 @@
 import styles from './App.module.css'
-import { Rocket, Trash } from 'phosphor-react'
+import { Header } from './components/Header'
+import { Task } from './components/Task'
+import { TaskForm } from './components/TaskForm'
+import { TaskStats } from './components/TaskStats'
+import { useState } from "react";
+import { v4 as uuid } from 'uuid'
+
+interface TaskType {
+  id: string
+  isCompleted: boolean
+  description: string
+}
 
 export function App() {
+  const [tasks, setTasks] = useState(Array<TaskType>)
+  const [totalTasks, setTotalTasks] = useState(0)
+  const [completedTasks, setCompletedTasks] = useState(0)
+
+  function handleAddNewTask(description: string): void {
+    const newTask: TaskType = {
+      id: uuid(),
+      isCompleted: false,
+      description: description
+    }
+    const newArrayOfTasks = [...tasks, newTask]
+    setTasks(sortTasksAccordingToCompletion(newArrayOfTasks))
+    setTotalTasks(totalTasks + 1)
+  }
+  function handleChangeOnTaskCompletion(id: string) {
+    const newListOfTasks = tasks.map(task => {
+      if (task.id == id) {
+        task.isCompleted = !task.isCompleted
+      }
+      return task
+    })
+    setTasks(sortTasksAccordingToCompletion(newListOfTasks))
+    countCompletedTasks(newListOfTasks)
+  }
+  function handleDeleteTask(id: string) {
+    const newListWithoutDeletedOne = tasks.filter(task => task.id !== id)
+    setTasks(newListWithoutDeletedOne)
+    countCompletedTasks(newListWithoutDeletedOne)
+    setTotalTasks(totalTasks - 1)
+  }
+  function countCompletedTasks(taskList: TaskType[]) {
+    const completed = taskList.filter(task => task.isCompleted == true)
+    setCompletedTasks(completed.length)
+  }
+  function sortTasksAccordingToCompletion(listOfTasks: TaskType[]): TaskType[] {
+    //tutorial https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+    const sortedTasks = listOfTasks.sort((a, b) => {
+      const stateA = a.isCompleted, stateB = b.isCompleted
+      if (stateA && !stateB) return 1;
+      if (stateB && !stateA) return -1;
+      return 0
+    })
+    return sortedTasks
+  }
 
   return (
     <>
-      <header className={styles.todoHeader}>
-        <Rocket size={36} className={styles.icon}/>
-        <div className={styles.title}>
-          <span className={styles.firstSyllable}>to</span>
-          <span className={styles.secondSyllable}>do</span>
-        </div>
-      </header>   
+      <Header />
       <div className={styles.contentWrapper}>
-        <form className={styles.formWrapper}>
-          <input type="text" placeholder='Adicione uma nova tarefa' className={styles.inputTaskName}/>
-          <button type="submit" className={styles.btnSubmitTask}>
-            Criar
-          </button>
-        </form>
+        <TaskForm onAddNewTask={handleAddNewTask} />
+        
         <section className={styles.sectionWrapper}>
-          <header className={styles.taskStats}>
-            <div className={styles.stat}>
-              <strong className={styles.created}>Tarefas criadas</strong>
-              <span>5</span>
-            </div>
-            <div className={styles.stat}>
-              <strong className={styles.completed}>Concluídas</strong>
-              <span>3 de 5</span>
-            </div>
-          </header>
+          <TaskStats completed={completedTasks} total={totalTasks} />
           <main className={styles.taskList}>
-          <div className={styles.taskWrapper}>
-            <div className={styles.taskRightSide}>
-              <input type="checkbox" name="taskStatus" id="taskStatus"/>
-              <p className={styles.taskDescription}>
-                Estudar React Native no Ignite
-              </p>
-            </div>
-              
-              <button>
-                <Trash size={18} className={styles.iconTrash}/>
-              </button>
-            </div>
-            <div className={styles.taskWrapper}>
-              <div className={styles.taskRightSide}>
-                <input type="checkbox" name="taskStatus" id="taskStatus"/>
-                <p className={styles.taskDescription}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Enim distinctio iste, et voluptates totam ex quia quis? 
-                  Eius officiis, alias molestiae quo, facilis rerum aperiam, 
-                  sequi quam repudiandae voluptatem non?
-                </p>
-              </div>
-              
-              <button>
-                <Trash size={18} className={styles.iconTrash}/>
-              </button>
-            </div>
+            {
+              tasks.map(task => {
+                return (
+                  <Task
+                    key={task.id}
+                    id={task.id}
+                    isCompleted={task.isCompleted}
+                    description={task.description}
+                    onCompletionChange={handleChangeOnTaskCompletion}
+                    onDelete={handleDeleteTask}
+                  />
+                )
+              })
+            }
           </main>
         </section>
-      </div>  
+      </div>
     </>
   )
 }

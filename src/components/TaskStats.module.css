@@ -1,0 +1,27 @@
+.taskStats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.stat {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+.stat > span {
+  background-color: var(--gray-400);
+  color: var(--gray-100);
+  padding: 2px 8px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border-radius: 1rem;
+}
+.created, .completed{
+  color: var(--purple-100);
+  font-size: 0.875rem;
+}
+.created {
+  color: var(--blue-100);
+}

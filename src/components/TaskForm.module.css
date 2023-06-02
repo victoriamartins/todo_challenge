@@ -1,0 +1,36 @@
+.formWrapper {
+  height: 3.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.inputTaskName{
+  border-radius: 8px;
+  background-color: var(--gray-500);
+  border: 1px solid var(--gray-700);
+  outline: none;
+  padding-inline: 1rem;
+  width: 100%;
+  color: var(--gray-100);
+  font-size: 1rem;
+}
+.inputTaskName::placeholder {
+  color: var(--gray-300);
+}
+.btnSubmitTask {
+  border: 0;
+  color: var(--gray-100);
+  background-color: var(--blue-200);
+  border-radius: 8px;
+  width: 5.625rem;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+.btnSubmitTask:hover {
+  background-color: var(--blue-100);
+}

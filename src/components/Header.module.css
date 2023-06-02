@@ -1,0 +1,24 @@
+.title {
+  font-size: 2.5rem;
+  line-height: 1.4;
+  font-weight: 900;
+}
+.firstSyllable {
+  color: var(--blue-100);
+}
+.secondSyllable {
+  color: var(--purple-200);
+}
+.iconRocket {
+  color: var(--blue-100);
+}
+.todoHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+
+  background-color: var(--gray-700);
+  padding-block: 4rem;
+}
